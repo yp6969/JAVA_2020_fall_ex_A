@@ -1,3 +1,27 @@
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
+
+/**
+ * @author Pinhas
+ * 
+ * java GUI count to 10 by theread
+ * 
+ *
+ */
 public class Gui implements ActionListener {
 	
 	private JTextField textField;
@@ -10,6 +34,9 @@ public class Gui implements ActionListener {
 	private Thread t;
 	
 	
+	/**
+	 * @param constractor
+	 */
 	public Gui(){
 		
 		frame = new JFrame("phone number");
@@ -57,8 +84,13 @@ public class Gui implements ActionListener {
 
 	}
 
+	/**
+	 * @param n
+	 * 
+	 * run a thread to update the JLable 
+	 */
 	public void invokeinitWindow(int n){
-		/* Thread */ t = new Thread( new Runnable(){
+		t = new Thread( new Runnable(){
 			
 				public void run() {
 					int num_1 = n;
@@ -82,6 +114,9 @@ public class Gui implements ActionListener {
 		
 	}
 	
+	/**
+	 * split the actions for each button
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		int num = Integer.parseInt(textField.getText());
@@ -94,7 +129,10 @@ public class Gui implements ActionListener {
 //			
 		}
 		else if(e.getSource() == stop) {
-			t.interrupt();;
+			
+			//stop the thread
+			t.interrupt();
+			
 			start.setEnabled(true);
 			stop.setEnabled(false);
 		}
