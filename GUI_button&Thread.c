@@ -126,12 +126,12 @@ public class Gui implements ActionListener {
 			
 			invokeinitWindow(num);
 			
-//			
+			
 		}
 		else if(e.getSource() == stop) {
 			
-			//stop the thread
-			t.interrupt();
+			
+			t.interrupt(); //stop the thread
 			
 			start.setEnabled(true);
 			stop.setEnabled(false);
