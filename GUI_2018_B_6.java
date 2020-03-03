@@ -1,3 +1,4 @@
+package ccv;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -20,6 +21,7 @@ public class GuiTest extends JFrame implements MouseListener
 	 */
 	private static final long serialVersionUID = 1L;
 	private static boolean running = false ;
+	private static int counter = 0; 
 	private JPanel panel;
 	private JLabel label;
 	UpdateGu gu;
@@ -37,6 +39,7 @@ public class GuiTest extends JFrame implements MouseListener
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
 	
 		label = new JLabel("0");
+		panel.add(gu);
 		add(panel);
 		add(label);
 		pack();
@@ -51,8 +54,8 @@ public class GuiTest extends JFrame implements MouseListener
 			public void run() {
 				
 				while(true) {
-					running = true;
-					System.out.println("gigigigigi");
+					running = false;
+					
 					gu.repaint();
 					try {
 						Thread.sleep(1000);
@@ -61,8 +64,17 @@ public class GuiTest extends JFrame implements MouseListener
 						e.printStackTrace();
 						return;
 					}
-					running = false;
+					running = true;
 					gu.repaint();
+					counter++;
+					label.setText(String.valueOf(counter));
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						return;
+					}
 				}
 				
 			}
@@ -111,7 +123,6 @@ public class GuiTest extends JFrame implements MouseListener
 		private static final long serialVersionUID = 1L;
 		
 		public void paintComponent(Graphics g ) {
-			System.out.println("omjhsjfsf");
 			if(running == true) {
 				System.out.println("ziziziziziz");
 				g.setColor(Color.GREEN);
